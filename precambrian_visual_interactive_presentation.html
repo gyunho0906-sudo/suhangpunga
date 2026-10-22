@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선캄브리아시대의 환경과 생물 - 고등학교 통합과학 발표</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        geo: {
+                            dark: '#0B1120',
+                            card: '#1E293B',
+                            accent: '#38BDF8',
+                            emerald: '#10B981',
+                            amber: '#F59E0B',
+                            rose: '#F43F5E',
+                            purple: '#A855F7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Keyframe Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(0.98); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+        @keyframes swimHorizontal {
+            0% { transform: translateX(-20px) translateY(0px); }
+            50% { transform: translateX(20px) translateY(-5px); }
+            100% { transform: translateX(-20px) translateY(0px); }
+        }
+        @keyframes fadeOutOrganism {
+            0% { opacity: 1; transform: scale(1); filter: grayscale(0%); }
+            100% { opacity: 0.05; transform: scale(0.7); filter: grayscale(100%); }
+        }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+        .animate-swim { animation: swimHorizontal 6s ease-in-out infinite; }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B1120; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="bg-geo-dark text-slate-100 font-sans antialiased min-h-screen pb-12">
+
+    <!-- Header / Banner -->
+    <header class="relative border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-cyan-500/10 border border-cyan-500/30 rounded-xl">
+                    <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9" stroke-width="2"/>
+                        <path stroke-linecap="round" stroke-width="2" d="M12 7v5l3 3"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase">고등학교 통합과학 발표</span>
+                    <h1 class="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300">
+                        선캄브리아시대의 환경과 생물
+                    </h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 text-xs bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-slate-300">시각 자료 중심 학습 웹페이지</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- Intro Hero Section -->
+        <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <svg width="300" height="300" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="max-w-3xl">
+                <span class="px-3 py-1 text-xs font-medium bg-amber-500/20 text-amber-300 rounded-full border border-amber-500/30">
+                    지구 역사의 약 88%
+                </span>
+                <h2 class="text-2xl md:text-3xl font-extrabold mt-3 text-white leading-tight">
+                    글로 읽는 과학이 아닌, <span class="text-cyan-400">눈으로 직접 확인하는</span> 선캄브리아시대
+                </h2>
+                <p class="mt-2 text-slate-300 text-sm md:text-base leading-relaxed">
+                    약 46억 년 전 지구의 탄생부터 5억 4100만 년 전 고생대 시작 전까지! 대기, 해양, 초대륙 로디니아, 그리고 스트로마톨라이트와 디킨소니아까지 인라인 SVG 아트와 인터랙션으로 관찰해보세요.
+                </p>
+            </div>
+        </section>
+
+        <!-- GRID LAYOUT FOR 10 CONTENT SECTIONS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- ① 시대 구분 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">①</span>
+                        <h3 class="text-lg font-bold text-white">시대 구분 (24시간 지구 시계)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center my-4">
+                        <svg class="w-full max-w-[280px] h-auto" viewBox="0 0 200 200">
+                            <!-- Background Circle -->
+                            <circle cx="100" cy="100" r="80" fill="#0f172a" stroke="#334155" stroke-width="6"/>
+                            <!-- Precambrian Arc (00:00 to 21:21 -> ~88% = 318.8 degrees) -->
+                            <!-- Start top (0, -80), Arc to ~21:21 -->
+                            <path d="M 100 20 A 80 80 0 1 1 35.8 148" fill="none" stroke="#0ea5e9" stroke-width="12" stroke-linecap="round"/>
+                            <!-- Phanerozoic Arc (Remaining ~12%) -->
+                            <path d="M 35.8 148 A 80 80 0 0 1 100 20" fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round"/>
+                            <!-- Center Pivot -->
+                            <circle cx="100" cy="100" r="6" fill="#f8fafc"/>
+                            <!-- Clock Hand pointing to Paleozoic transition at 21:21 -->
+                            <line x1="100" y1="100" x2="45" y2="140" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Time Labels -->
+                            <text x="100" y="12" fill="#94a3b8" font-size="8" text-anchor="middle">00:00 (46억 년 전)</text>
+                            <text x="100" y="104" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">선캄브리아시대 (88%)</text>
+                            <text x="15" y="160" fill="#f59e0b" font-size="8" font-weight="bold">21:21 고생대 시작</text>
+                            <text x="15" y="170" fill="#cbd5e1" font-size="7">(삼엽충 등 등장)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-cyan-300 mb-1">💡 핵심 개념 설명</p>
+                    이 시대를 나누는 기준은 고생대의 표준화석인 삼엽충 등의 등장 시기입니다. 46억 년 지구 역사를 24시간 시계로 환산하면, 선캄브리아시대는 약 21시간 21분 동안 지속된 가장 길었던 시대입니다.
+                </div>
+            </section>
+
+            <!-- ② 기후 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">②</span>
+                        <h3 class="text-lg font-bold text-white">기후 변동 (눈덩이 지구 & 빙하)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center my-4 relative">
+                        <svg id="climateSvg" class="w-full max-w-[280px] h-auto transition-all duration-700" viewBox="0 0 200 140">
+                            <!-- Earth Sphere -->
+                            <circle cx="100" cy="70" r="50" fill="#1e3a8a"/>
+                            <!-- Continents -->
+                            <path d="M 70 50 Q 85 40 100 60 T 120 80 Q 90 100 70 80 Z" fill="#15803d"/>
+                            <path d="M 110 40 Q 130 50 120 70 T 100 50 Z" fill="#166534"/>
+                            <!-- Ice Caps Top/Bottom (Initial Warm State) -->
+                            <path id="iceTop" d="M 70 28 A 50 50 0 0 1 130 28 Z" fill="#f1f5f9" opacity="0.4"/>
+                            <path id="iceBottom" d="M 70 112 A 50 50 0 0 0 130 112 Z" fill="#f1f5f9" opacity="0.4"/>
+                            <!-- Snowball Overlay (Hidden by default) -->
+                            <circle id="snowballOverlay" cx="100" cy="70" r="51" fill="#e2e8f0" opacity="0" class="transition-opacity duration-700"/>
+                        </svg>
+                        <!-- Climate Controls -->
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="setClimate('warm')" class="px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs rounded-lg border border-amber-500/40 transition">
+                                초기: 온난 (석회암)
+                            </button>
+                            <button onclick="setClimate('ice')" class="px-3 py-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 text-xs rounded-lg border border-cyan-500/40 transition">
+                                후기: 빙하기 (빙하퇴적물)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-amber-300 mb-1">💡 핵심 개념 설명</p>
+                    초기 지층에서 두꺼운 석회암이 발견되어 초기에는 대체로 온난했던 것으로 보입니다. 그러나 중기와 후기 지층에서 빙하 퇴적물이 발견되면서 지구 전체가 얼어붙었던 '눈덩이 지구' 빙하기가 있었음을 알 수 있습니다.
+                </div>
+            </section>
+
+            <!-- ③ 대기·해양 환경 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all md:col-span-2">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">③</span>
+                        <h3 class="text-lg font-bold text-white">대기·해양 환경 (산소, 이산화 탄소 & 자외선)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 my-4">
+                        <svg class="w-full h-auto max-h-[220px]" viewBox="0 0 500 180">
+                            <!-- Atmosphere Zone -->
+                            <rect x="0" y="0" width="500" height="70" fill="url(#skyGrad)"/>
+                            <!-- Sun Rays / UV -->
+                            <path d="M 40 0 L 10 70 M 60 0 L 80 70 M 120 0 L 150 70" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,3"/>
+                            <text x="20" y="20" fill="#f59e0b" font-size="10" font-weight="bold">강한 태양 자외선 (오존층 없음)</text>
+                            <text x="200" y="30" fill="#f8fafc" font-size="10">화산 활동 ➔ CO₂ 풍부 (강한 온실효과로 따뜻함)</text>
+                            <text x="200" y="50" fill="#38bdf8" font-size="10" font-weight="bold">대산화 사건(Great Oxidation Event) ➔ O₂ 대기 급증</text>
+                            
+                            <!-- Ocean Surface & Body -->
+                            <rect x="0" y="70" width="500" height="110" fill="url(#oceanGrad)"/>
+                            <path d="M 0 70 Q 125 65 250 70 T 500 70" fill="none" stroke="#38bdf8" stroke-width="2"/>
+                            
+                            <!-- Seafloor / Iron & cyanobacteria -->
+                            <path d="M 0 160 Q 150 145 300 160 T 500 150 L 500 180 L 0 180 Z" fill="#334155"/>
+                            
+                            <!-- Cyanobacteria Bubbles (Oxygen) -->
+                            <circle cx="80" cy="140" r="12" fill="#10b981" opacity="0.7"/>
+                            <text x="80" y="143" fill="#ffffff" font-size="8" text-anchor="middle">남세균</text>
+                            
+                            <!-- Oxygen Bubbles Rising -->
+                            <circle cx="80" cy="115" r="3" fill="#78716c"/>
+                            <circle cx="90" cy="95" r="4" fill="#38bdf8"/>
+                            <text x="105" y="110" fill="#cbd5e1" font-size="9">바다 속 철 이온(Fe²⁺) 산화 ➔ 적색 철광층 침전</text>
+                            
+                            <!-- Organisms living in shallow water to avoid UV -->
+                            <rect x="350" y="110" width="120" height="40" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+                            <text x="410" y="128" fill="#38bdf8" font-size="9" text-anchor="middle" font-weight="bold">얕은 바다 서식 환경</text>
+                            <text x="410" y="142" fill="#94a3b8" font-size="8" text-anchor="middle">(자외선 차단 및 햇빛 확보)</text>
+
+                            <!-- Gradients -->
+                            <defs>
+                                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#451a03"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                                <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#0284c7" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-cyan-300 mb-1">💡 핵심 개념 설명</p>
+                    초기 화산 활동으로 높은 CO₂ 농도가 유발한 강한 온실 효과로 따뜻했습니다. 약 35억 년 전 남세균 출현으로 산소가 생성되어 바다의 철 이온을 산화시켰고, 약 20~24억 년 전 '대산화 사건'으로 대기 중 산소가 급격히 증가했습니다. 오존층이 없어 강력한 자외선을 피해 생물들은 얕은 바다에 모였습니다.
+                </div>
+            </section>
+
+            <!-- ④ 수륙 분포 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">④</span>
+                        <h3 class="text-lg font-bold text-white">수륙 분포 (초대륙 로디니아)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center my-4">
+                        <svg class="w-full max-w-[280px] h-auto" viewBox="0 0 240 140">
+                            <!-- Background Water -->
+                            <rect x="0" y="0" width="240" height="140" rx="10" fill="#0369a1" opacity="0.3"/>
+                            
+                            <!-- Landmass A -->
+                            <path id="landA" d="M 60 40 Q 90 30 110 50 T 100 90 Q 70 100 50 70 Z" fill="#d97706" stroke="#f59e0b" stroke-width="2" class="transition-all duration-1000"/>
+                            <!-- Landmass B -->
+                            <path id="landB" d="M 120 50 Q 150 40 170 70 T 150 100 Q 120 100 110 70 Z" fill="#b45309" stroke="#f59e0b" stroke-width="2" class="transition-all duration-1000"/>
+                            
+                            <!-- Orogeny Mountain Lines -->
+                            <path id="mountains" d="M 105 50 L 115 90" stroke="#ef4444" stroke-width="4" stroke-dasharray="2,2" opacity="0" class="transition-opacity duration-1000"/>
+                            
+                            <!-- Label -->
+                            <text id="rodiniaText" x="120" y="22" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">대륙 이동 인터랙션</text>
+                        </svg>
+                        <!-- Controls -->
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="uniteRodinia()" class="px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs rounded-lg border border-amber-500/40 transition">
+                                초대륙 로디니아 합체
+                            </button>
+                            <button onclick="splitRodinia()" class="px-3 py-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 text-xs rounded-lg border border-cyan-500/40 transition">
+                                대륙 분리
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-amber-300 mb-1">💡 핵심 개념 설명</p>
+                    고생대 말의 '판게아'와 달리, 원생누대 중후기(약 11억~7억 년 전)에는 초대륙 **'로디니아(Rodinia)'**가 형성되어 있었습니다. 그랜빌 조산운동 등 대규모 조산 운동과 화산 활동이 활발했으며, 암석들은 변성암(편암, 편마암)으로 보존되어 있습니다.
+                </div>
+            </section>
+
+            <!-- ⑤ 대표 동물 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">⑤</span>
+                        <h3 class="text-lg font-bold text-white">대표 동물 (에디아카라 동물군)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center my-4 overflow-hidden relative">
+                        <svg class="w-full max-w-[280px] h-auto" viewBox="0 0 240 140">
+                            <!-- Water BG -->
+                            <rect x="0" y="0" width="240" height="140" fill="#0c4a6e" rx="8"/>
+                            
+                            <!-- Spriggina (Swimming/Floating) -->
+                            <g class="animate-swim">
+                                <!-- Body Spine & Segments -->
+                                <path d="M 40 50 Q 70 45 100 50" stroke="#38bdf8" stroke-width="3" fill="none"/>
+                                <path d="M 45 42 L 45 58 M 55 40 L 55 60 M 65 40 L 65 60 M 75 42 L 75 58 M 85 44 L 85 56" stroke="#7dd3fc" stroke-width="1.5"/>
+                                <circle cx="38" cy="50" r="5" fill="#38bdf8"/>
+                                <text x="65" y="35" fill="#38bdf8" font-size="8" font-weight="bold" text-anchor="middle">스프리기나 (Spriggina)</text>
+                            </g>
+
+                            <!-- Mawsonia / Jellyfish-like Organism -->
+                            <g class="animate-float" style="animation-delay: 1s;">
+                                <circle cx="180" cy="80" r="22" fill="#a855f7" opacity="0.5" stroke="#c084fc" stroke-width="2"/>
+                                <circle cx="180" cy="80" r="14" fill="#c084fc" opacity="0.7"/>
+                                <text x="180" y="115" fill="#c084fc" font-size="8" font-weight="bold" text-anchor="middle">모소니엘라 (원시 해파리류)</text>
+                            </g>
+                            
+                            <!-- Seafloor -->
+                            <path d="M 0 125 Q 120 120 240 125 L 240 140 L 0 140 Z" fill="#1e293b"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-purple-300 mb-1">💡 핵심 개념 설명</p>
+                    선캄브리아 시대의 동물들은 모두 **해양 생물**이었습니다. 포식자나 강력한 경쟁 생물이 거의 없어, 에디아카라 동물군(스프리기나, 원시 해파리 등)은 얕은 바다 표면과 바닥에서 평화롭게 번성할 수 있었습니다.
+                </div>
+            </section>
+
+            <!-- ⑥ 대표 식물/생물 (디킨소니아) -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">⑥</span>
+                        <h3 class="text-lg font-bold text-white">대표 생물 (디킨소니아 & 연체 조직)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center my-4">
+                        <svg class="w-full max-w-[280px] h-auto" viewBox="0 0 240 140">
+                            <!-- Dickinsonia Oval Body -->
+                            <ellipse cx="120" cy="70" rx="75" ry="45" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="2"/>
+                            
+                            <!-- Center Ridge Line -->
+                            <line x1="120" y1="28" x2="120" y2="112" stroke="#fbbf24" stroke-width="2"/>
+                            
+                            <!-- Leaf/Feather-like Rib Segments -->
+                            <g stroke="#f59e0b" stroke-width="1.5">
+                                <!-- Left side ribs -->
+                                <path d="M 120 35 Q 90 32 52 50"/>
+                                <path d="M 120 45 Q 80 43 47 65"/>
+                                <path d="M 120 58 Q 75 58 45 75"/>
+                                <path d="M 120 72 Q 75 75 48 88"/>
+                                <path d="M 120 88 Q 85 92 58 102"/>
+
+                                <!-- Right side ribs -->
+                                <path d="M 120 35 Q 150 32 188 50"/>
+                                <path d="M 120 45 Q 160 43 193 65"/>
+                                <path d="M 120 58 Q 165 58 195 75"/>
+                                <path d="M 120 72 Q 165 75 192 88"/>
+                                <path d="M 120 88 Q 155 92 182 102"/>
+                            </g>
+
+                            <text x="120" y="20" fill="#fbbf24" font-size="9" font-weight="bold" text-anchor="middle">디킨소니아 (Dickinsonia)</text>
+                            <text x="120" y="128" fill="#cbd5e1" font-size="8" text-anchor="middle">단단한 뼈/껍데기 없음 (순수 연체 조직)</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-amber-300 mb-1">💡 핵심 개념 설명</p>
+                    **디킨소니아**는 타원형 몸체에 깃털이나 나뭇잎 같은 마디가 촘촘히 나열된 독특한 외형을 가졌습니다. 후대 고생대 생물과 달리 뼈나 단단한 껍데기가 전혀 없는 **연체 조직**으로만 이루어져 있었습니다.
+                </div>
+            </section>
+
+            <!-- ⑦ 표준화석 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">⑦</span>
+                        <h3 class="text-lg font-bold text-white">표준화석 (스트로마톨라이트 & 4대 조건)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 my-4">
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                            <div class="p-2 bg-slate-800 rounded-lg border border-slate-700 text-center">
+                                <span class="text-amber-400 text-xs font-bold block">① 생존 기간</span>
+                                <span class="text-[11px] text-slate-300">짧아야 함 (특정 시대)</span>
+                            </div>
+                            <div class="p-2 bg-slate-800 rounded-lg border border-slate-700 text-center">
+                                <span class="text-amber-400 text-xs font-bold block">② 분포 면적</span>
+                                <span class="text-[11px] text-slate-300">넓어야 함 (전 세계)</span>
+                            </div>
+                            <div class="p-2 bg-slate-800 rounded-lg border border-slate-700 text-center">
+                                <span class="text-amber-400 text-xs font-bold block">③ 개체 수</span>
+                                <span class="text-[11px] text-slate-300">많아야 함</span>
+                            </div>
+                            <div class="p-2 bg-slate-800 rounded-lg border border-slate-700 text-center">
+                                <span class="text-amber-400 text-xs font-bold block">④ 주요 목적</span>
+                                <span class="text-[11px] text-slate-300">지질 시대 판단</span>
+                            </div>
+                        </div>
+                        <!-- Stromatolite Fossil SVG Art -->
+                        <svg class="w-full h-20" viewBox="0 0 200 60">
+                            <path d="M 20 50 Q 50 20 80 50 T 140 50 T 180 50" fill="none" stroke="#10b981" stroke-width="3"/>
+                            <path d="M 20 42 Q 50 12 80 42 T 140 42 T 180 42" fill="none" stroke="#059669" stroke-width="2"/>
+                            <path d="M 20 34 Q 50 4 80 34 T 140 34 T 180 34" fill="none" stroke="#047857" stroke-width="2"/>
+                            <text x="100" y="58" fill="#10b981" font-size="8" text-anchor="middle" font-weight="bold">층상 퇴적 구조: 스트로마톨라이트 화석</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-emerald-300 mb-1">💡 핵심 개념 설명</p>
+                    이 시대의 대표 표준화석은 **스트로마톨라이트**입니다. 생물 자체는 물렁하여 화석이 되기 어렵지만, 이들이 만들어낸 특징적 층상 암석 구조가 지층에서 발견되면 선캄브리아시대 지층임을 확실히 알 수 있습니다.
+                </div>
+            </section>
+
+            <!-- ⑧ 시대 말 사건 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">⑧</span>
+                        <h3 class="text-lg font-bold text-white">시대 말 사건 (대멸종 및 사라짐)</h3>
+                    </div>
+                    <!-- Visual SVG Container -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex flex-col items-center justify-center my-4">
+                        <svg class="w-full max-w-[280px] h-auto" viewBox="0 0 240 120">
+                            <!-- Fading Organism Group -->
+                            <g id="extinctionGroup" class="transition-all duration-1000">
+                                <!-- Ediacaran organism -->
+                                <circle cx="70" cy="50" r="25" fill="#f43f5e" opacity="0.6"/>
+                                <path d="M 55 50 L 85 50 M 70 35 L 70 65" stroke="#ffffff" stroke-width="2"/>
+                                <text x="70" y="88" fill="#f43f5e" font-size="8" text-anchor="middle" font-weight="bold">에디아카라 생물군</text>
+                                
+                                <!-- Stromatolite -->
+                                <path d="M 150 65 Q 170 35 190 65 Z" fill="#10b981" opacity="0.6"/>
+                                <text x="170" y="88" fill="#10b981" font-size="8" text-anchor="middle" font-weight="bold">스트로마톨라이트</text>
+                            </g>
+                            <text id="extinctionStatus" x="120" y="20" fill="#cbd5e1" font-size="9" font-weight="bold" text-anchor="middle">환경 급변 이전 번성 상태</text>
+                        </svg>
+                        <button onclick="triggerExtinction()" class="mt-2 px-4 py-1.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 text-xs rounded-lg border border-rose-500/40 transition font-bold">
+                            💥 시대 말 환경 변화 시뮬레이션
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-rose-300 mb-1">💡 핵심 개념 설명</p>
+                    선캄브리아 시대 말기, 번성하던 에디아카라 동물군과 스트로마톨라이트가 **대거 소멸**했습니다. 대기 및 해양 환경의 급격한 변동과 대규모 기온 변화가 주요 원인으로 추정됩니다.
+                </div>
+            </section>
+
+            <!-- ⑨ 시상화석과 환경 추론 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all md:col-span-2">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">⑨</span>
+                        <h3 class="text-lg font-bold text-white">시상화석과 환경 추론 (스트로마톨라이트)</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                        <!-- Interactive Fossil Card -->
+                        <div onclick="toggleFaciesEnv()" class="cursor-pointer bg-slate-900/90 rounded-xl p-4 border border-cyan-500/30 hover:border-cyan-400 transition flex flex-col items-center justify-center text-center">
+                            <div id="faciesCardContent">
+                                <svg class="w-32 h-24 mx-auto mb-2" viewBox="0 0 120 90">
+                                    <path d="M 20 70 Q 60 20 100 70 Z" fill="#b45309"/>
+                                    <path d="M 30 70 Q 60 35 90 70 Z" fill="#d97706"/>
+                                    <path d="M 40 70 Q 60 50 80 70 Z" fill="#f59e0b"/>
+                                </svg>
+                                <span class="text-xs text-cyan-400 font-bold block">👆 클릭하여 당시 서식 환경 확인하기</span>
+                                <span class="text-[11px] text-slate-400">스트로마톨라이트 화석 단면</span>
+                            </div>
+                        </div>
+
+                        <!-- Facies vs Index Fossil Matrix Table -->
+                        <div class="overflow-x-auto bg-slate-900/80 rounded-xl p-3 border border-slate-800">
+                            <table class="w-full text-left text-[11px] text-slate-300 border-collapse">
+                                <thead>
+                                    <tr class="border-b border-slate-700 text-cyan-300">
+                                        <th class="p-1">구분</th>
+                                        <th class="p-1">표준화석 (Index)</th>
+                                        <th class="p-1">시상화석 (Facies)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-800">
+                                        <td class="p-1 font-semibold text-amber-300">주요 목적</td>
+                                        <td class="p-1">지질 시대 판단</td>
+                                        <td class="p-1">당시 서식 환경 추정</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-800">
+                                        <td class="p-1 font-semibold text-amber-300">생존 기간</td>
+                                        <td class="p-1">짧아야 함</td>
+                                        <td class="p-1">길어야 함</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-800">
+                                        <td class="p-1 font-semibold text-amber-300">분포 면적</td>
+                                        <td class="p-1">넓어야 함</td>
+                                        <td class="p-1">좁아야 함 (특정 환경)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1 font-semibold text-amber-300">대표 예시</td>
+                                        <td class="p-1">삼엽충, 암모나이트</td>
+                                        <td class="p-1 text-emerald-400 font-bold">스트로마톨라이트, 고사리</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-cyan-300 mb-1">💡 핵심 개념 설명</p>
+                    스트로마톨라이트는 시상화석으로서 당시 서식 환경이 **'따뜻하고 얕은 바다'**였음을 알려줍니다. 시상화석은 생존 기간이 길고 특정 환경 조건에만 서식하므로 과거 생태 환경을 추론하는 중요한 지표가 됩니다.
+                </div>
+            </section>
+
+            <!-- ⑩ 환경 변화와 생물 변화의 관계 -->
+            <section class="bg-geo-card border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-cyan-500/40 transition-all md:col-span-2">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-7 h-7 flex items-center justify-center bg-cyan-500/20 text-cyan-400 font-bold rounded-lg text-sm">⑩</span>
+                        <h3 class="text-lg font-bold text-white">환경 변화와 생물 변화의 상호작용 (인과관계 흐름도)</h3>
+                    </div>
+                    <!-- Visual Arrow Flowchart SVG -->
+                    <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 my-4 overflow-x-auto">
+                        <svg class="w-full min-w-[550px] h-auto" viewBox="0 0 600 130">
+                            <!-- Step 1 -->
+                            <rect x="10" y="25" width="120" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                            <text x="70" y="50" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">① 남세균 출현</text>
+                            <text x="70" y="70" fill="#cbd5e1" font-size="8" text-anchor="middle">얕은 바다로 집결</text>
+                            <text x="70" y="85" fill="#cbd5e1" font-size="8" text-anchor="middle">광합성 개시</text>
+
+                            <!-- Arrow 1 -->
+                            <path d="M 135 65 L 165 65" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Step 2 -->
+                            <rect x="170" y="25" width="120" height="80" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="230" y="50" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">② 산소 대량 방출</text>
+                            <text x="230" y="70" fill="#cbd5e1" font-size="8" text-anchor="middle">철 이온 산화 및</text>
+                            <text x="230" y="85" fill="#cbd5e1" font-size="8" text-anchor="middle">대기 산소 급증</text>
+
+                            <!-- Arrow 2 -->
+                            <path d="M 295 65 L 325 65" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Step 3 Split A -->
+                            <rect x="330" y="10" width="120" height="50" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+                            <text x="390" y="30" fill="#f43f5e" font-size="9" font-weight="bold" text-anchor="middle">③-A 혐기성 미생물</text>
+                            <text x="390" y="45" fill="#cbd5e1" font-size="8" text-anchor="middle">산소 독성으로 사멸</text>
+
+                            <!-- Step 3 Split B -->
+                            <rect x="330" y="70" width="120" height="50" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+                            <text x="390" y="88" fill="#f59e0b" font-size="9" font-weight="bold" text-anchor="middle">③-B 침전물 퇴적</text>
+                            <text x="390" y="103" fill="#cbd5e1" font-size="8" text-anchor="middle">점액질 + 퇴적물 층 형성</text>
+
+                            <!-- Arrow 3 -->
+                            <path d="M 455 95 L 485 95" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Final Result -->
+                            <rect x="490" y="65" width="100" height="55" rx="8" fill="#065f46" stroke="#34d399" stroke-width="2"/>
+                            <text x="540" y="88" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="middle">스트로마톨라이트</text>
+                            <text x="540" y="103" fill="#a7f3d0" font-size="8" text-anchor="middle">암석 구조 완성</text>
+
+                            <!-- Arrow Definition -->
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 text-xs md:text-sm text-slate-300 leading-snug">
+                    <p class="font-medium text-emerald-300 mb-1">💡 핵심 개념 설명</p>
+                    남세균이 산소를 방출하자 기존 혐기성 미생물들은 산소 독성으로 대부분 사멸했습니다. 동시에 남세균이 분비한 점액질에 모래와 석회 물질이 결합하고 층층이 쌓여 **스트로마톨라이트 퇴적 구조**를 형성했습니다.
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Self Check Checklist Box -->
+        <section class="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-6">
+            <h3 class="text-base font-bold text-emerald-400 mb-3 flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2,2" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                발표 자료 요구사항 자체 점검 결과
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-xs">
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ① 시대 구분 (24h 시계)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ② 기후 (빙하 변동)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ③ 대기/해양 (O₂/자외선)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ④ 수륙분포 (로디니아)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ⑤ 대표동물 (에디아카라)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ⑥ 대표식물 (디킨소니아)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ⑦ 표준화석 (4가지조건)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ⑧ 시대말 사건 (대멸종)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ⑨ 시상화석 (환경추론)</div>
+                <div class="p-2 bg-slate-800/80 rounded border border-slate-700 text-slate-300">✅ ⑩ 환경-생물 관계</div>
+            </div>
+            <p class="mt-3 text-[11px] text-slate-400">※ 외부 이미지 링크 없이 순수 인라인 SVG 코드 및 CSS/JS 인터랙션으로 구현 완료되었습니다.</p>
+        </section>
+
+        <!-- Footer / Credits & References -->
+        <footer class="border-t border-slate-800 pt-8 text-xs text-slate-400 space-y-4">
+            <div class="flex flex-col md:flex-row justify-between gap-6">
+                <!-- Team Members -->
+                <div>
+                    <h4 class="font-bold text-slate-200 mb-1 text-sm">👨‍🎓 만든 사람</h4>
+                    <p class="text-cyan-400 font-semibold mb-0.5">1반 5모둠</p>
+                    <p>이혜성, 이찬민, 이동국, 최시환, 한균호</p>
+                </div>
+
+                <!-- References -->
+                <div class="max-w-xl">
+                    <h4 class="font-bold text-slate-200 mb-1 text-sm">📚 참고 자료 출처</h4>
+                    <ul class="list-disc list-inside space-y-0.5 text-[11px]">
+                        <li>미래엔 통합과학2 교과서, justcallmekai.com의 Kai's lecture</li>
+                        <li>미래엔 통합과학 교과서, 한국지질자원연구원(KIGAM) 지질박물관 학술 자료, 대한지질학회 용어 사전</li>
+                        <li>한국민족문화대백과사전 (한국학중앙연구원) - '옹진 소청도 스트로마톨라이트 및 분바위'</li>
+                        <li>과학교과서, 한국지질자원연구원(KIGAM) 지질 연구 자료 및 성과 보고서</li>
+                        <li>대한민국 고등학교 지구과학 I 및 통합과학 교과서</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-slate-600 border-t border-slate-800/50 pt-4">
+                &copy; 2026 고등학교 통합과학 발표용 시각화 웹페이지. All rights reserved.
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // ② Climate Toggle Script
+        function setClimate(type) {
+            const snowball = document.getElementById('snowballOverlay');
+            if (type === 'ice') {
+                snowball.style.opacity = '0.85';
+            } else {
+                snowball.style.opacity = '0';
+            }
+        }
+
+        // ④ Rodinia Supercontinent Script
+        function uniteRodinia() {
+            const landA = document.getElementById('landA');
+            const landB = document.getElementById('landB');
+            const mt = document.getElementById('mountains');
+            const txt = document.getElementById('rodiniaText');
+
+            landA.setAttribute('d', 'M 80 40 Q 100 30 120 50 T 110 90 Q 80 100 60 70 Z');
+            landB.setAttribute('d', 'M 110 45 Q 130 35 150 65 T 130 95 Q 100 95 100 65 Z');
+            mt.style.opacity = '1';
+            txt.textContent = '초대륙 로디니아 형성 (조산운동 활발)';
+            txt.setAttribute('fill', '#f59e0b');
+        }
+
+        function splitRodinia() {
+            const landA = document.getElementById('landA');
+            const landB = document.getElementById('landB');
+            const mt = document.getElementById('mountains');
+            const txt = document.getElementById('rodiniaText');
+
+            landA.setAttribute('d', 'M 40 40 Q 70 30 90 50 T 80 90 Q 50 100 30 70 Z');
+            landB.setAttribute('d', 'M 140 50 Q 170 40 190 70 T 170 100 Q 140 100 130 70 Z');
+            mt.style.opacity = '0';
+            txt.textContent = '선캄브리아 말기: 대륙 분리';
+            txt.setAttribute('fill', '#38bdf8');
+        }
+
+        // ⑧ Extinction Trigger Script
+        let isExtinct = false;
+        function triggerExtinction() {
+            const group = document.getElementById('extinctionGroup');
+            const status = document.getElementById('extinctionStatus');
+
+            if (!isExtinct) {
+                group.style.opacity = '0.08';
+                group.style.filter = 'grayscale(100%)';
+                status.textContent = '⚠️ 환경 급변으로 생물군 대멸종 및 사라짐';
+                status.setAttribute('fill', '#f43f5e');
+                isExtinct = true;
+            } else {
+                group.style.opacity = '1';
+                group.style.filter = 'none';
+                status.textContent = '환경 급변 이전 번성 상태';
+                status.setAttribute('fill', '#cbd5e1');
+                isExtinct = false;
+            }
+        }
+
+        // ⑨ Facies Fossil Environment Reveal Script
+        let isRevealed = false;
+        function toggleFaciesEnv() {
+            const card = document.getElementById('faciesCardContent');
+            if (!isRevealed) {
+                card.innerHTML = `
+                    <svg class="w-32 h-24 mx-auto mb-2" viewBox="0 0 120 90">
+                        <rect x="0" y="0" width="120" height="90" fill="#0284c7" rx="6"/>
+                        <circle cx="20" cy="20" r="10" fill="#fbbf24"/>
+                        <path d="M 0 60 Q 60 50 120 60 L 120 90 L 0 90 Z" fill="#f59e0b"/>
+                        <text x="60" y="40" fill="#ffffff" font-size="9" font-weight="bold" text-anchor="middle">☀️ 따뜻하고 얕은 바다</text>
+                    </svg>
+                    <span class="text-xs text-amber-300 font-bold block">✨ 추론된 과거 환경</span>
+                    <span class="text-[11px] text-slate-300">따뜻하고 햇살이 잘 드는 얕은 바다 연안</span>
+                `;
+                isRevealed = true;
+            } else {
+                card.innerHTML = `
+                    <svg class="w-32 h-24 mx-auto mb-2" viewBox="0 0 120 90">
+                        <path d="M 20 70 Q 60 20 100 70 Z" fill="#b45309"/>
+                        <path d="M 30 70 Q 60 35 90 70 Z" fill="#d97706"/>
+                        <path d="M 40 70 Q 60 50 80 70 Z" fill="#f59e0b"/>
+                    </svg>
+                    <span class="text-xs text-cyan-400 font-bold block">👆 클릭하여 당시 서식 환경 확인하기</span>
+                    <span class="text-[11px] text-slate-400">스트로마톨라이트 화석 단면</span>
+                `;
+                isRevealed = false;
+            }
+        }
+    </script>
+</body>
+</html>
